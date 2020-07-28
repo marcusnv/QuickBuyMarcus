@@ -1,0 +1,7 @@
+{
+  "ConnectionStrings": {
+    "SqlServerConnection": "",
+    "QuickBuyMarcusDB": "server=localhost;uid=root;pwd=F@culdadeefdr15;database=QuickBuyMarcusDB"
+  }
+}
+
