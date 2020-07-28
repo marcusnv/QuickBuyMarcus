@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace QuickBuyMarcus.Dominio.Entidades
 {
-    public class Usuario
+    public class Usuario : Entidade
     {
         public int Id { get; set; }
         public string Email { get; set; }
@@ -15,5 +15,19 @@ namespace QuickBuyMarcus.Dominio.Entidades
         /// Um usuário pode ter NENHUM ou MUITOS pedidos
         /// </summary>
         public ICollection<Pedido> Pedidos { get; set; }
+
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+            if (string.IsNullOrEmpty(Email))
+            {
+                AdicionarCritica("Crítica: E-mail não informado");
+            }
+
+            if (string.IsNullOrEmpty(Senha))
+            {
+                AdicionarCritica("Crítica: Senha não foi informada");
+            }
+        }
     }
 }

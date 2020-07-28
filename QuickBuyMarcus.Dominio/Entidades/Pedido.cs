@@ -1,11 +1,12 @@
 ﻿using QuickBuyMarcus.Dominio.ObjetoDeValor;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 
 namespace QuickBuyMarcus.Dominio.Entidades
 {
-    public class Pedido
+    public class Pedido : Entidade
     {
         public int Id { get; set; }
         public DateTime DataPedido { get; set; }
@@ -25,5 +26,23 @@ namespace QuickBuyMarcus.Dominio.Entidades
         /// Pedido deve ter pelo menos 1 item de pedido ou muitos itens de pedidos
         /// </summary>
         public ICollection<ItemPedido> ItensPedido { get; set; }
+
+        public override void Validate()
+        {
+            LimparMensagensValidacao();
+
+            if (!ItensPedido.Any())
+            {
+                AdicionarCritica("Crítica: Pedido não pode estar vazio");
+            }
+            if (string.IsNullOrEmpty(CEP))
+            {
+                AdicionarCritica("Crítica: CEP deve estar preenchido");
+            }
+            if (FormaDePagamento.Id == 0)
+            {
+                AdicionarCritica("Crítica: Forma de pagamento não informada");
+            }
+        }
     }
 }
