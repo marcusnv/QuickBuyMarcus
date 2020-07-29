@@ -1,4 +1,5 @@
 ﻿using QuickBuyMarcus.Dominio.Contratos;
+using QuickBuyMarcus.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -7,13 +8,15 @@ namespace QuickBuyMarcus.Repositorio.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-        public BaseRepositorio()
-        {
+        private readonly QuickBuyMarcusContexto _quickBuyMarcusContexto;
 
+        public BaseRepositorio(QuickBuyMarcusContexto quickBuyMarcusContexto)
+        {
+            _quickBuyMarcusContexto = quickBuyMarcusContexto;
         }
         public void Adicionar(TEntity entity)
         {
-            throw new NotImplementedException();
+            _quickBuyMarcusContexto.Set<TEntity>().Add(entity);
         }
 
         public void Atualizar(TEntity entity)

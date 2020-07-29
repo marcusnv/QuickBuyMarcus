@@ -19,10 +19,13 @@ namespace QuickBuyMarcus.Repositorio.Config
                 .IsRequired()
                 .HasMaxLength(50);
 
+            builder.Property(p => p.Descricao)
+                .IsRequired()
+                .HasMaxLength(400);
+
             builder
                 .Property(p => p.Preco)
-                .IsRequired()
-                .HasMaxLength(50);
+                .IsRequired();
         }
     }
 }

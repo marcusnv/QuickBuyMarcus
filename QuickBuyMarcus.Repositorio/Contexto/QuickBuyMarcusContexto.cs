@@ -29,6 +29,26 @@ namespace QuickBuyMarcus.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
             modelBuilder.ApplyConfiguration(new PedidoConfiguration());
             modelBuilder.ApplyConfiguration(new ProdutoConfiguration());
+
+            modelBuilder.Entity<FormaDePagamento>().HasData(
+                new FormaDePagamento()
+                {
+                    Id = 1,
+                    Nome = "Boleto",
+                    Descricao = "Forma de pagamento: Boleto"
+                },
+                new FormaDePagamento()
+                {
+                    Id = 2,
+                    Nome = "Cartão de crédito",
+                    Descricao = "Forma de pagamento: Cartão de Crédito"
+                },
+                new FormaDePagamento()
+                {
+                    Id = 3,
+                    Nome = "Depósito",
+                    Descricao = "Forma de pagamento: Depósito"
+                });
             base.OnModelCreating(modelBuilder);
         }
     }

@@ -8,7 +8,7 @@ namespace QuickBuyMarcus.Dominio.Entidades
     //Classe abstrata - ñenhuma outra classe por instancia-la
     public abstract class Entidade
     {
-        public List<string> _mensagensValidacao { get; set; }
+        private List<string> _mensagensValidacao { get; set; }
         private List<string> mensagemValidacao
         {
             get { return _mensagensValidacao ?? (_mensagensValidacao = new List<string>()); }

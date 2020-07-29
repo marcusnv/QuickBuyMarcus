@@ -13,8 +13,9 @@ namespace QuickBuyMarcus.Dominio.Entidades
 
         /// <summary>
         /// Um usuário pode ter NENHUM ou MUITOS pedidos
+        /// A classe é virtual para o EFcore possa fazer a sobreposição da collection para alimenta-la em tempo de execução
         /// </summary>
-        public ICollection<Pedido> Pedidos { get; set; }
+        public virtual ICollection<Pedido> Pedidos { get; set; }
 
         public override void Validate()
         {

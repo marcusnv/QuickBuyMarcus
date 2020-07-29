@@ -26,7 +26,8 @@ namespace QuickBuyMarcus.Web
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             var connectionString = Configuration.GetConnectionString("QuickBuyMarcusDB");
             services.AddDbContext<QuickBuyMarcusContexto>(option => 
-                                                            option.UseMySql(connectionString,
+                                                            option.UseLazyLoadingProxies()
+                                                            .UseMySql(connectionString,
                                                                   m => m.MigrationsAssembly("QuickBuyMarcus.Repositorio")));
 
             // In production, the Angular files will be served from this directory

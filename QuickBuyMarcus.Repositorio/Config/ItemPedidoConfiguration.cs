@@ -13,11 +13,11 @@ namespace QuickBuyMarcus.Repositorio.Config
         {
             builder.HasKey(i => i.Id);
 
-            //Builder utiliza o padrão fluent
-            builder
-                .Property(i => i.Quantidade)
-                .IsRequired()
-                .HasMaxLength(50);
+            builder.Property(i => i.ProdutoId)
+                .IsRequired();
+
+            builder.Property(i => i.Quantidade)
+                .IsRequired();
         }
     }
 }
