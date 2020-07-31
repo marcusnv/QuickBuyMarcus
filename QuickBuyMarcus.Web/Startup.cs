@@ -6,7 +6,9 @@ using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using QuickBuyMarcus.Dominio.Contratos;
 using QuickBuyMarcus.Repositorio.Contexto;
+using QuickBuyMarcus.Repositorio.Repositorios;
 
 namespace QuickBuyMarcus.Web
 {
@@ -30,6 +32,8 @@ namespace QuickBuyMarcus.Web
                                                             .UseMySql(connectionString,
                                                                   m => m.MigrationsAssembly("QuickBuyMarcus.Repositorio")));
 
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
+            
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
