@@ -5,15 +5,58 @@
 
     <label for="inputEmail" class="sr-only">Email</label>
 
-    <input type="email" id="inputEmail" name="email" placeholder="Informe seu Email" class="form-control mb-2"/>
+    <input type="email"
+           id="inputEmail"
+           name="email"
+           placeholder="Informe seu Email"
+           class="form-control mb-2"
+           [ngClass] ="{
+           'is-invalid' :email.invalid && (email.dirty || email.touched),
+           'is-valid' : email.valid && (email.dirty || email.touched)
+           }"
+           [(ngModel)]="usuario.email"
+           #email="ngModel"
+           email
+           required />
 
-    <label for="inputSenha" class="sr-only">Senha</label>
+    <div class="invalid-feedback mb-2" *ngIf="email.invalid && (email.dirty || email.touched)">
+      <div *ngIf="email.errors.required">
+        E-mail obrigatório
+      </div>
+      <div *ngIf="email.errors.email">
+        Insira um e-mail com formato correto
+      </div>
+    </div>
 
-    <input type="password" id="inputSenha" name="senha" placeholder="Senha" class="form-control mb-2" />
+    <label for="inputSenha"
+           class="sr-only">Senha</label>
 
-    <button class="btn-btn-primary btn-block" type="submit">Entrar</button>
+    <input type="password"
+           id="inputSenha"
+           name="senha"
+           placeholder="Senha"
+           class="form-control mb-2"
+           [ngClass] ="{
+           'is-invalid' :senha.invalid && (senha.dirty || senha.touched),
+           'is-valid' : senha.valid && (senha.dirty || senha.touched)
+           }"
+           [(ngModel)]="usuario.senha"
+           #senha="ngModel"
+           required />
 
-    {{ email }}
-    {{ senha}}
+    <div class="invalid-feedback mb-2" *ngIf="senha.invalid && (senha.dirty || senha.touched)">
+      <div *ngIf="senha.errors.required">
+        Senha obrigatória
+      </div>
+    </div>
+
+    <button class="btn-btn-primary btn-block"
+            type="submit"
+            (click)="entrar()">
+      Entrar
+    </button>
+
+    <img [src]="enderecoImagem" [title]="titulo" />
+
   </form>
 </div>

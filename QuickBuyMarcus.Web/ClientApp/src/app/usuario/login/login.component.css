@@ -26,3 +26,8 @@
 {
     color: #666;
 }
+
+.form-signin img
+{
+  max-width: 200px;
+}
