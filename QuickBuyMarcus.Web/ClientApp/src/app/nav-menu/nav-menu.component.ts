@@ -26,6 +26,6 @@ export class NavMenuComponent {
   }
   sair() {
     sessionStorage.setItem("usuario-autenticado", "");
-    this.router.navigate(['']);
+    this.router.navigate(['/']);
   }
 }
