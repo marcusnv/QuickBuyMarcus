@@ -103,6 +103,10 @@
 
     <div class="mb-2 alert alert-danger" *ngIf="mensagem"> {{ mensagem }} </div>
 
+    <div class="alert alert-sucess" *ngIf="usuarioCadastrado">
+      Usuário cadastrado com sucesso! <a class="alert-link" [routerLink]='["/entrar"]'> Clique aqui</a> para entrar no sistema com a sua conta.
+    </div>
+
   </form>
 </div>
 

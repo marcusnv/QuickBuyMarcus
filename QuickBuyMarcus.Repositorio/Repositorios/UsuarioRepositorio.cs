@@ -18,5 +18,10 @@ namespace QuickBuyMarcus.Repositorio.Repositorios
         {
             return QuickBuyMarcusContexto.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
         }
+
+        public Usuario Obter(string email)
+        {
+            return QuickBuyMarcusContexto.Usuarios.FirstOrDefault(u => u.Email == email);
+        }
     }
 }
