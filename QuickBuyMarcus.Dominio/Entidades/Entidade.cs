@@ -24,8 +24,13 @@ namespace QuickBuyMarcus.Dominio.Entidades
             mensagemValidacao.Add(mensagem);
         }
 
+        public string ObterMensagensValidacao()
+        {
+            return string.Join(". ", mensagemValidacao);
+        }
+
         public abstract void Validate();
-        protected bool EValido
+        public bool EValido
         {
             get { return !mensagemValidacao.Any(); }
         }
