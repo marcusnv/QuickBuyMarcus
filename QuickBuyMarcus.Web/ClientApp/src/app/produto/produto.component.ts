@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { Produto } from "../modelo/produto";
 import { ProdutoServico } from "../../servicos/produto/produto.servico";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-produto",
@@ -14,7 +15,7 @@ export class ProdutoComponent implements OnInit {
   public ativar_spinner: boolean;
   public mensagem: string;
 
-  constructor(private produtoServico: ProdutoServico) {
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
 
   }
 
@@ -29,7 +30,6 @@ export class ProdutoComponent implements OnInit {
       .subscribe(
         nomeArquivo => {
           this.produto.nomeArquivo = nomeArquivo;
-          alert(this.produto.nomeArquivo);
           console.log(nomeArquivo);
           this.ativar_spinner = false;
         }, e => {
@@ -39,17 +39,27 @@ export class ProdutoComponent implements OnInit {
   }
 
   public cadastrar() {
-    this.produto;
+    this.ativarEspera();
     this.produtoServico.cadastrar(this.produto).subscribe(
       produtoJson => {
         console.log(produtoJson);
-
+        this.desativarEspera();
+        this.router.navigate(['/pesquisar-produto'])
       },
       e => {
         console.log(e.error);
         this.mensagem = e.error;
+        this.desativarEspera();
       }
     );
+  }
+
+  public ativarEspera() {
+    this.ativar_spinner = true;
+  }
+
+  public desativarEspera() {
+    this.ativar_spinner = false;
   }
 
 

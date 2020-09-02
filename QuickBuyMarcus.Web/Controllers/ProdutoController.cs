@@ -30,11 +30,7 @@ namespace QuickBuyMarcus.Web.Controllers
         {
             try
             {
-                return Ok(_produtoRepositorio.ObterTodos());
-                //if (condicao == false)
-                //{
-                //    return BadRequest("")
-                //}
+                return Json(_produtoRepositorio.ObterTodos());
             }
             catch (Exception ex)
             {
@@ -58,6 +54,22 @@ namespace QuickBuyMarcus.Web.Controllers
             }
             catch (Exception ex)
             {
+                return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpPost("Deletar")]
+        public IActionResult Deletar([FromBody] Produto produto)
+        {
+            try
+            {
+                // produto recebido do fromBody, deve ter a propriedade Id > 0
+                _produtoRepositorio.Remover(produto);
+                return Json(_produtoRepositorio.ObterTodos());
+            }
+            catch (Exception ex)
+            {
+
                 return BadRequest(ex.ToString());
             }
         }
