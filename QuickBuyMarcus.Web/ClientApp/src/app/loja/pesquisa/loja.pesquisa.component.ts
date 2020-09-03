@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core"
 import { ProdutoServico } from "../../../servicos/produto/produto.servico";
 import { Produto } from "../../modelo/produto";
+import { Router } from "@angular/router";
 
 @Component({
   selector: "app-loja",
@@ -15,7 +16,7 @@ export class LojaPesquisaComponent implements OnInit {
         
   }
 
-  constructor(private produtoServico: ProdutoServico) {
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
     this.produtoServico.obterTodosProdutos().subscribe(
       produtos => {
         this.produtos = produtos;
@@ -24,6 +25,11 @@ export class LojaPesquisaComponent implements OnInit {
         console.log(e.error);
       }
     )
+  }
+
+  public abrirProduto(produto: Produto) {
+    sessionStorage.setItem('produtoDetalhe', JSON.stringify(produto));
+    this.router.navigate(['/loja-produto']);
   }
 
 }
