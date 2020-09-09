@@ -11,6 +11,8 @@ namespace QuickBuyMarcus.Dominio.Entidades
         public string Nome { get; set; }
         public string Sobrenome { get; set; }
 
+        public bool EAdministrador { get; set; }
+
         /// <summary>
         /// Um usuário pode ter NENHUM ou MUITOS pedidos
         /// A classe é virtual para o EFcore possa fazer a sobreposição da collection para alimenta-la em tempo de execução

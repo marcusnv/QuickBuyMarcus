@@ -40,6 +40,8 @@ namespace QuickBuyMarcus.Web.Controllers
                 var usuarioCadastrado = _usuarioRepositorio.Obter(usuario.Email);
                 if (usuarioCadastrado != null)
                     return BadRequest("Usuário já cadastrado no sistema");
+
+ //               usuario.EAdministrador = true;
                 _usuarioRepositorio.Adicionar(usuario);
                 return Ok();
             }

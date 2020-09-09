@@ -3,7 +3,10 @@
     <div class="col-md-7"><img src="../../../../../arquivos/{{produto.nomeArquivo}}" /></div>
     <div class="col-md-5">
       <div class="row mb-4"><h1 class="h4">{{produto.descricao}}</h1></div>
-      <div class="row"><h1 class="h4">{{produto.preco}}</h1></div>
+      <div class="row"><h1 class="h4">R$ {{produto.preco}}</h1></div>
+      <div class="row mb-4">
+        <button class="btn btn-danger btn-lg" (click)="comprar()">Comprar</button>
+      </div>
     </div>
   </div>
 </div>
