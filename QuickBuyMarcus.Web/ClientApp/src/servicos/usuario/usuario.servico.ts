@@ -27,7 +27,7 @@ export class UsuarioServico {
   }
 
   public usuario_administrador(): boolean {
-    return this.usuarioAutenticado() && this._usuario.eAdminitrador;
+    return this.usuarioAutenticado() && this.usuario.eAdministrador;
   }
 
   public limpar_sessao() {

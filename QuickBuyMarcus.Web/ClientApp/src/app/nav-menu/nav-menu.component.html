@@ -13,19 +13,27 @@
           <li class="nav-item" [routerLinkActive]='["link-active"]' [routerLinkActiveOptions]='{ exact: true }'>
             <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
           </li>
-          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuario_administrador()" >
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuario_administrador()">
             <a class="nav-link text-dark" [routerLink]='["/pesquisar-produto"]'>Produto</a>
           </li>
+
           <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="!usuarioLogado()">
             <a class="nav-link text-dark" [routerLink]='["/entrar"]'>Entrar</a>
           </li>
 
           <li class="nav-item dropdown" *ngIf="usuarioLogado()">
             <a class="nav-link text-dark dropdown-toggle" role="button" aria-haspopup="true" href="#"
-               aria-expanded="false" id="linkMenu" data-toggle="dropdown">{{usuario.nome}} {{usuario.sobrenome}}
+               aria-expanded="false" id="linkMenu" data-toggle="dropdown">
+              {{usuario.nome}} {{usuario.sobrenome}}
               <ul class="dropdown-menu" aria-labelledby="linkMenu">
                 <li class="dropdown-item" role="menu" [routerLink]='["/sair"]' (click)="sair()">Sair</li>
               </ul>
+            </a>
+          </li>
+
+          <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="temItensCarrinhoCompras()">
+            <a class="nav-link text-dark" [routerLink]='["/loja-efetivar"]'>
+              <img src="assets/img/best-buy-carrinho.png" style="width:32px; height:32px;" />
             </a>
           </li>
         </ul>

@@ -32,6 +32,10 @@ var LojaCarrinhoComponent = /** @class */ (function () {
     LojaCarrinhoComponent.prototype.atualizar = function (produtos) {
         localStorage.setItem("produtoLocalStorage", JSON.stringify(produtos));
     };
+    LojaCarrinhoComponent.prototype.temItensCarrinhoCompras = function () {
+        var itens = this.obterProdutos();
+        return (itens.length > 0);
+    };
     LojaCarrinhoComponent.prototype.ngOnInit = function () {
     };
     return LojaCarrinhoComponent;
