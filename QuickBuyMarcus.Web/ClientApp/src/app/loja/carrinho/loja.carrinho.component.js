@@ -20,6 +20,7 @@ var LojaCarrinhoComponent = /** @class */ (function () {
         if (produtoLocalStorage) {
             return JSON.parse(produtoLocalStorage);
         }
+        return this.produtos;
     };
     LojaCarrinhoComponent.prototype.removerProduto = function (produto) {
         var produtoLocalStorage = localStorage.getItem("produtoLocalStorage");
@@ -35,6 +36,9 @@ var LojaCarrinhoComponent = /** @class */ (function () {
     LojaCarrinhoComponent.prototype.temItensCarrinhoCompras = function () {
         var itens = this.obterProdutos();
         return (itens.length > 0);
+    };
+    LojaCarrinhoComponent.prototype.limparCarrinhoCompras = function () {
+        localStorage.setItem("produtoLocalStorage", "");
     };
     LojaCarrinhoComponent.prototype.ngOnInit = function () {
     };
